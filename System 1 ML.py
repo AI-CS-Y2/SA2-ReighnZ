@@ -57,11 +57,11 @@ label_encoder = LabelEncoder()
 df['Mental_Health_Condition'] = label_encoder.fit_transform(df['Mental_Health_Condition'])
 df['Severity'] = label_encoder.fit_transform(df['Severity'])
 df['Stress_Level'] = label_encoder.fit_transform(df['Stress_Level'])
-df['Recommendation'] = label_encoder.fit_transform(df['Recommendation'])  # Now we encode the Recommendation column
+df['Recommendation'] = label_encoder.fit_transform(df['Recommendation'])
 
 # Split dataset into features and target
-X = df[['Mental_Health_Condition', 'Severity', 'Stress_Level', 'Sleep_Hours']]  # Features
-y = df['Recommendation']  # Target variable
+X = df[['Mental_Health_Condition', 'Severity', 'Stress_Level', 'Sleep_Hours']]
+y = df['Recommendation']
 
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)

@@ -28,18 +28,18 @@ df['Mental_State'] = df.apply(lambda row: determine_mental_state(row['Stress_Lev
 # Encode categorical variables to numeric
 label_encoder = LabelEncoder()
 
-df['Stress_Level'] = label_encoder.fit_transform(df['Stress_Level'].str.strip().str.lower())  # Encoding Stress_Level
-df['Mental_State'] = label_encoder.fit_transform(df['Mental_State'])  # Encoding Mental State (target)
+df['Stress_Level'] = label_encoder.fit_transform(df['Stress_Level'].str.strip().str.lower())
+df['Mental_State'] = label_encoder.fit_transform(df['Mental_State'])
 
 # Features and target variables
-X = df[['Stress_Level', 'Sleep_Hours']]  # Features
-y = df['Mental_State']  # Target variable
+X = df[['Stress_Level', 'Sleep_Hours']]
+y = df['Mental_State']
 
 # Split dataset into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Initialize and train Logistic Regression model
-clf = LogisticRegression(max_iter=1000)  # Increase max_iter if needed for convergence
+clf = LogisticRegression(max_iter=1000)
 clf.fit(X_train, y_train)
 
 # Predict mental state on the test data
@@ -61,7 +61,7 @@ roc_auc = auc(fpr, tpr)
 
 plt.figure()
 plt.plot(fpr, tpr, label='ROC curve (area = %0.2f)' % roc_auc)
-plt.plot([0, 1], [0, 1], 'k--')  # Diagonal line
+plt.plot([0, 1], [0, 1], 'k--')
 plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.title('ROC Curve')
